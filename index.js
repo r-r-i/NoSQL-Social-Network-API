@@ -2,8 +2,6 @@ const express = require('express');
 const db = require('./config/connection');
 const routes = require('./routes');
 
-// Not sure what this does, research it!
-const cwd = process.cwd();
 
 const PORT = process.env.port || 3001;
 const app = express();
