@@ -2,6 +2,7 @@ const { ObjectId } = require('mongoose').Types;
 const { User, Thought, } = require('../models');
 module.exports = {
 
+// NEED TO FIGURE OUT HOW TO USE MONGOOSE '.populate' method!
 
 // Get all users
 getUsers(req, res) {
