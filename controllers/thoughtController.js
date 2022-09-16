@@ -20,7 +20,7 @@ module.exports = {
     },
 // POST to create a new thought
     // dont forget to push the created thought's _id to the asociated user's thoughts array field
-    createThought(req, res) {
+    createAThought(req, res) {
         console.log("You are adding a Thought")
         console.log(req.body)
         User.findOneAndUpdate(
@@ -37,6 +37,26 @@ module.exports = {
         )
         .catch((err) => res.status(500).json(err));
     }, 
+
+
+createThought({ body }, res ){
+    Thought.create(body)
+    .then(({ _id }) => {
+        return User.findOneAndUpdate(
+            {_id: body.userId},
+            {$push: {thoughts: _id }},
+            {new: true }
+        );
+    })
+    .then((user) => 
+        !user
+        ?res
+            .status(404)
+            .json({ message: "No user with that ID"})
+        : res.json(user)
+        )
+        .catch((err) => res.status(500).json(err))
+},
 
 
 // PUT to update a thought by its _id
