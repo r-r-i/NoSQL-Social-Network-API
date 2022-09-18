@@ -1,5 +1,6 @@
 const { ObjectId } = require('mongoose').Types;
 const { User, Thought, } = require('../models');
+
 module.exports = {
 
 // NEED TO FIGURE OUT HOW TO USE MONGOOSE '.populate' method!
@@ -7,6 +8,8 @@ module.exports = {
 // Get all users
 getUsers(req, res) {
 User.find()
+    .populate('thoughts')
+    .populate('friends')
     .select("-__V")
     .then((users) => res.json(users))
     .catch((err) => res.status(500).json(err));
@@ -15,6 +18,8 @@ User.find()
 // GET a single user by its _id and populated thought and friend data
 getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
+    .populate('thoughts')
+    .populate('friends')
     .select('-__V')
     .then((user) => 
         !user

@@ -6,12 +6,14 @@ module.exports = {
 // GET to get all thoughts
     getThoughts(req, res) {
         Thought.find()
+            .populate('reactions')
             .then((thoughts) => res.json(thoughts))
             .catch((err) => res.status(500).json(err));
     },
 // GET to get a single thought by its _id
     getSingleThought(req, res) {
         Thought.findOne({ _id: req.params.thoughtId })
+        .populate('reactions')
         .select('-__V')
         .then((thought) => 
             !thought
