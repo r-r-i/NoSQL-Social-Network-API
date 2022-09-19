@@ -9,7 +9,7 @@ For this challenge, I was given the task of building an API for a social network
 
 The following video shows the functionality of this application:
 
-- [demo](https://youtu.be/5zHF7MmETv8)
+- [demo](https://www.youtube.com/watch?v=GHgO3ZO3_FU)
 
 
 ## Installation Instructions
@@ -25,7 +25,7 @@ npm i
 No seed data is provided, so you'll need to create your own data using Insomnia after you've started the application.
 
 - Install Node.JS
-- This app is not deployed. To access and view the database, you'll need to use Insomnia or MongoDBCompass to view database results.
+- This app is not deployed. To access and view the database, you'll need to use Insomnia or MongoDBCompass.
 
 ## License
 
