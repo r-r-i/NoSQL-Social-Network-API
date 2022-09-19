@@ -40,8 +40,6 @@ createThought({ body }, res ){
         )
         .catch((err) => res.status(500).json(err))
 },
-
-
 // PUT to update a thought by its _id
     updateThought(req, res) {
         Thought.findOneAndUpdate(
@@ -56,7 +54,6 @@ createThought({ body }, res ){
         )
         .catch((err) => res.status(500).json(err));
     },
-
 // DELETE to remove a thought by its _id
     deleteThought(req, res) {
         Thought.findOneAndDelete({_id: req.params.thoughtId })
@@ -68,11 +65,9 @@ createThought({ body }, res ){
         .then(() => res.json({ message: 'Thought deleted!'}))
         .catch((err) => res.status(500).json(err));
     },
-
 // /api/thoughts/:thoughtId/reactions
     // POST to create a reaction stored in a single thought's reactions array field 
     addReaction(req, res) {
-        console.log('You are adding a reaction');
         Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
         { $addToSet: { reactions: req.body } },
@@ -88,8 +83,6 @@ createThought({ body }, res ){
         .catch((err) => res.status(500).json(err));
     },
   // DELETE to pull and remove a reaction by the reaction's reactionId value
-
-  
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
